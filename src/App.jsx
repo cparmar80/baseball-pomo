@@ -1019,24 +1019,26 @@ export default function BaseballPomodoro() {
           .status { display:none !important; }
           .scroll {
             overflow:hidden !important;
-            padding: env(safe-area-inset-top, 20px) 20px 0 20px;
-            justify-content:space-between;
+            display:flex !important;
+            flex-direction:column !important;
+            padding: env(safe-area-inset-top, 16px) 20px 0 20px;
+            justify-content:flex-start !important;
           }
-          .navbar { padding:8px 0 10px; }
-          .stat-card-wrap { padding:10px 8px 8px; margin-bottom:8px; }
-          .stat-date { margin-bottom:8px; }
+          .navbar { padding:6px 0 8px; flex-shrink:0; }
+          .stat-card-wrap { padding:10px 8px 8px; margin-bottom:8px; flex-shrink:0; }
+          .stat-date { margin-bottom:6px; }
           .stat-col-val { font-size:26px !important; }
-          .ticker-wrap { margin-bottom:8px; }
-          .mode-tabs { margin-bottom:10px; }
-          .hr-banner-wrap { height:32px !important; }
-          .hr-banner { font-size:18px !important; }
-          .live-bar { min-height:20px !important; margin-bottom:6px !important; }
-          .timer-wrap { flex:0 0 auto !important; padding:0 !important; align-items:center; }
-          .timer-ring { width:220px !important; height:220px !important; }
-          .timer-ring svg { width:220px !important; height:220px !important; }
-          .timer-inner { width:220px !important; height:220px !important; }
-          .timer-digits { font-size:74px !important; }
-          .btn-stack { padding:8px 0 max(env(safe-area-inset-bottom, 16px), 20px); gap:8px; }
+          .ticker-wrap { margin-bottom:8px; flex-shrink:0; }
+          .mode-tabs { margin-bottom:8px; flex-shrink:0; }
+          .hr-banner-wrap { height:28px !important; flex-shrink:0; }
+          .hr-banner { font-size:17px !important; }
+          .timer-wrap { flex:1 1 auto !important; padding:0 !important; justify-content:center !important; min-height:0; }
+          .live-bar { min-height:18px !important; margin-bottom:4px !important; }
+          .timer-ring { width:200px !important; height:200px !important; }
+          .timer-ring svg { width:200px !important; height:200px !important; }
+          .timer-inner { width:200px !important; height:200px !important; }
+          .timer-digits { font-size:68px !important; }
+          .btn-stack { padding:8px 0 max(env(safe-area-inset-bottom, 20px), 20px); gap:8px; flex-shrink:0; }
           .btn-primary { min-height:50px !important; }
           .btn-reset { min-height:40px !important; }
           .floating-chip-wrap { border-radius:0 !important; }
