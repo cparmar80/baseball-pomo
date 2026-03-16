@@ -432,6 +432,8 @@ function SettingsPanel({ open, onClose, workMins, breakMins, onWorkChange, onBre
     return h > 0 ? `${h}:${mm}:${ss}` : `${m}:${ss}`;
   };
 
+  const isMobile = typeof window !== "undefined" && window.innerWidth <= 480;
+
   return (
     <>
       {/* Backdrop — always rendered so click-outside works reliably */}
@@ -1204,8 +1206,8 @@ export default function BaseballPomodoro() {
         @keyframes breakPulse { 0%,100% { opacity:0.5; } 50% { opacity:1; } }
       `}</style>
 
-      <div className="app-outer" style={{display:"flex",alignItems:"center",justifyContent:"center",minHeight:"100dvh",background:T.wallBg}}>
-        <div className="phone" role="main" aria-label="Ballpark Focus Pomodoro Timer" style={{background: mode==="work" ? T.scrollBg : T.scrollBgBreak, transition:"background 0.5s ease"}}>
+      <div className="app-outer" style={isMobile ? {display:"block",width:"100%",minHeight:"100dvh",background:mode==="work"?T.scrollBg:T.scrollBgBreak} : {display:"flex",alignItems:"center",justifyContent:"center",minHeight:"100dvh",background:T.wallBg}}>
+        <div className="phone" role="main" aria-label="Ballpark Focus Pomodoro Timer" style={isMobile ? {width:"100%",height:"100dvh",borderRadius:0,boxShadow:"none",background:mode==="work"?T.scrollBg:T.scrollBgBreak,transition:"background 0.5s ease"} : {background:mode==="work"?T.scrollBg:T.scrollBgBreak,transition:"background 0.5s ease"}}>
           <Confetti active={confetti} />
           <div className="notch" aria-hidden="true" />
 
@@ -1265,7 +1267,7 @@ export default function BaseballPomodoro() {
             </div>
           </div>
 
-          <div className="scroll">
+          <div className="scroll" style={isMobile ? {padding:"env(safe-area-inset-top, 16px) 24px 0 24px", overflow:"hidden", display:"flex", flexDirection:"column", height:"100%"} : {}}>
 
             {/* Navbar */}
             <div className="navbar">
@@ -1329,8 +1331,8 @@ export default function BaseballPomodoro() {
               }
 
               {/* Progress ring — rAF driven for 60fps smoothness */}
-              <div className="timer-ring" style={{width:"280px",height:"280px",maxWidth:"100%"}}>
-                <svg width="280" height="280" viewBox="0 0 280 280" aria-hidden="true">
+              <div className="timer-ring" style={isMobile ? {width:"240px",height:"240px"} : {width:"280px",height:"280px",maxWidth:"100%"}}>
+                <svg width="280" height="280" viewBox="0 0 280 280" aria-hidden="true" style={isMobile ? {width:"240px",height:"240px"} : {}}>
                   <circle cx="140" cy="140" r="126" fill="none" stroke={T.arcTrack} strokeWidth="6" transform="rotate(-90 140 140)" />
                   <circle
                     ref={arcRef}
@@ -1344,10 +1346,10 @@ export default function BaseballPomodoro() {
                     transform="rotate(-90 140 140)"
                   />
                 </svg>
-                <div className="timer-inner">
+                <div className="timer-inner" style={isMobile ? {width:"240px",height:"240px"} : {}}>
                   <div className="timer-digits" role="timer" aria-label={`${fmt(timeLeft)} remaining`}
                     onClick={(e) => { if (e.altKey) { forceHRRef.current = true; awardStat(); } }}
-                    style={{cursor:"default"}}>
+                    style={isMobile ? {cursor:"default",fontSize:"80px"} : {cursor:"default"}}>
                     {fmt(timeLeft)}
                   </div>
                   <div className="timer-mode-lbl">{mode==="work" ? "Focus" : "Rest"}</div>
@@ -1374,7 +1376,7 @@ export default function BaseballPomodoro() {
             <div className="stat-announce" />
 
             {/* Buttons */}
-            <div className="btn-stack">
+            <div className="btn-stack" style={isMobile ? {flexShrink:0,padding:`10px 0 max(env(safe-area-inset-bottom, 24px), 24px)`,gap:"10px"} : {}}>
               <button className={`btn-primary ${mode}`} onClick={toggle}
                 aria-label={running?"Pause timer":isAtStart?"Start timer":"Resume timer"}>
                 {btnLabel}
