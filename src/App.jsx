@@ -1021,27 +1021,28 @@ export default function BaseballPomodoro() {
             overflow:hidden !important;
             display:flex !important;
             flex-direction:column !important;
+            height:100% !important;
             padding: env(safe-area-inset-top, 16px) 20px 0 20px;
-            justify-content:flex-start !important;
           }
-          .navbar { padding:6px 0 8px; flex-shrink:0; }
-          .stat-card-wrap { padding:10px 8px 8px; margin-bottom:8px; flex-shrink:0; }
+          .navbar { padding:6px 0 8px; flex:0 0 auto; }
+          .stat-card-wrap { padding:10px 8px 8px; margin-bottom:8px; flex:0 0 auto; }
           .stat-date { margin-bottom:6px; }
           .stat-col-val { font-size:26px !important; }
-          .ticker-wrap { margin-bottom:8px; flex-shrink:0; }
-          .mode-tabs { margin-bottom:8px; flex-shrink:0; }
-          .hr-banner-wrap { height:28px !important; flex-shrink:0; }
-          .hr-banner { font-size:17px !important; }
-          .timer-wrap { flex:1 1 auto !important; padding:0 !important; justify-content:center !important; min-height:0; }
-          .live-bar { min-height:18px !important; margin-bottom:4px !important; }
-          .timer-ring { width:200px !important; height:200px !important; }
+          .ticker-wrap { margin-bottom:8px; flex:0 0 auto; }
+          .mode-tabs { margin-bottom:6px; flex:0 0 auto; }
+          .hr-banner-wrap { height:26px !important; flex:0 0 26px; }
+          .hr-banner { font-size:16px !important; }
+          .timer-wrap { flex:1 1 0 !important; min-height:0 !important; padding:0 !important; justify-content:center !important; overflow:hidden; }
+          .live-bar { min-height:16px !important; margin-bottom:4px !important; }
+          .timer-ring { width:200px !important; height:200px !important; flex-shrink:0; }
           .timer-ring svg { width:200px !important; height:200px !important; }
           .timer-inner { width:200px !important; height:200px !important; }
           .timer-digits { font-size:68px !important; }
-          .btn-stack { padding:8px 0 max(env(safe-area-inset-bottom, 20px), 20px); gap:8px; flex-shrink:0; }
+          .floating-chip-wrap { border-radius:0 !important; }
+          .stat-announce { display:none !important; }
+          .btn-stack { flex:0 0 auto; padding:8px 0 max(env(safe-area-inset-bottom, 20px), 20px) !important; gap:8px; }
           .btn-primary { min-height:50px !important; }
           .btn-reset { min-height:40px !important; }
-          .floating-chip-wrap { border-radius:0 !important; }
           .settings-backdrop { border-radius:0 !important; }
           .settings-panel { border-radius:0 44px 44px 0 !important; }
         }
