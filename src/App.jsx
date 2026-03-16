@@ -574,14 +574,38 @@ export default function BaseballPomodoro() {
   const T = THEMES[themeKey] || THEMES.dayGame;
 
   const [isMobile, setIsMobile] = useState(() => {
-    try { return typeof window !== "undefined" && window.innerWidth <= 480; } catch(e) { return false; }
+    try { return typeof window !== "undefined" && window.innerWidth <= 500; } catch(e) { return false; }
   });
   useEffect(() => {
     try {
-      const handler = () => setIsMobile(window.innerWidth <= 480);
+      const handler = () => setIsMobile(window.innerWidth <= 500);
       window.addEventListener("resize", handler);
       handler();
       return () => window.removeEventListener("resize", handler);
+    } catch(e) {}
+  }, []);
+
+  // Inject critical mobile reset into document.head for full page scope
+  useEffect(() => {
+    try {
+      const id = "baseball-mobile-reset";
+      let el = document.getElementById(id);
+      if (!el) {
+        el = document.createElement("style");
+        el.id = id;
+        document.head.appendChild(el);
+      }
+      el.textContent = `
+        html, body, #root {
+          margin: 0; padding: 0;
+          width: 100%; height: 100%;
+        }
+        body {
+          display: block !important;
+          min-height: 100dvh;
+          overflow: hidden;
+        }
+      `;
     } catch(e) {}
   }, []);
 
@@ -1278,6 +1302,10 @@ export default function BaseballPomodoro() {
           </div>
 
           <div className="scroll" style={isMobile ? {padding:"env(safe-area-inset-top, 16px) 24px 0 24px", overflow:"hidden", display:"flex", flexDirection:"column", height:"100%"} : {}}>
+            {/* DEBUG — remove after testing */}
+            <div style={{background:"red",color:"white",fontSize:"11px",padding:"2px 6px",position:"fixed",top:0,right:0,zIndex:9999}}>
+              w={typeof window!=="undefined"?window.innerWidth:"?"} mobile={String(isMobile)}
+            </div>
 
             {/* Navbar */}
             <div className="navbar">
