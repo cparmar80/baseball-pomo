@@ -432,8 +432,6 @@ function SettingsPanel({ open, onClose, workMins, breakMins, onWorkChange, onBre
     return h > 0 ? `${h}:${mm}:${ss}` : `${m}:${ss}`;
   };
 
-  const isMobile = typeof window !== "undefined" && window.innerWidth <= 480;
-
   return (
     <>
       {/* Backdrop — always rendered so click-outside works reliably */}
@@ -574,6 +572,18 @@ export default function BaseballPomodoro() {
   const [breakMins, setBreakMins] = useState(initPrefs.brk);
   const [themeKey,  setThemeKey]  = useState(initPrefs.theme);
   const T = THEMES[themeKey] || THEMES.dayGame;
+
+  const [isMobile, setIsMobile] = useState(() => {
+    try { return typeof window !== "undefined" && window.innerWidth <= 480; } catch(e) { return false; }
+  });
+  useEffect(() => {
+    try {
+      const handler = () => setIsMobile(window.innerWidth <= 480);
+      window.addEventListener("resize", handler);
+      handler();
+      return () => window.removeEventListener("resize", handler);
+    } catch(e) {}
+  }, []);
 
   const WORK  = workMins  * 60;
   const BREAK = breakMins * 60;
