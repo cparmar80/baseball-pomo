@@ -1208,19 +1208,19 @@ export default function BaseballPomodoro() {
           .mode-tabs { margin-bottom:8px; flex:0 0 auto; width:100%; }
           .hr-banner-wrap { height:26px !important; flex:0 0 26px; }
           .hr-banner { font-size:16px !important; }
-          .timer-wrap { flex:1 1 0 !important; min-height:0 !important; padding:0 !important; justify-content:center !important; overflow:hidden; width:100%; }
+          .timer-wrap { flex:1 1 0 !important; min-height:0 !important; padding:0 0 40px 0 !important; justify-content:center !important; overflow:hidden; width:100%; }
           .live-bar { min-height:18px !important; margin-bottom:6px !important; }
-          .timer-ring { width:240px !important; height:240px !important; flex-shrink:0; }
-          .timer-ring svg { width:240px !important; height:240px !important; }
-          .timer-inner { width:240px !important; height:240px !important; }
-          .timer-digits { font-size:80px !important; }
+          .timer-ring { width:270px !important; height:270px !important; flex-shrink:0; }
+          .timer-ring svg { width:270px !important; height:270px !important; }
+          .timer-inner { width:270px !important; height:270px !important; }
+          .timer-digits { font-size:90px !important; }
           .floating-chip-wrap { border-radius:0 !important; }
           .stat-announce { display:none !important; }
           .btn-stack { flex:0 0 auto; padding:10px 0 max(env(safe-area-inset-bottom, 24px), 24px) !important; gap:10px; width:100%; }
           .btn-primary { min-height:54px !important; width:100% !important; }
           .btn-reset { min-height:44px !important; width:100% !important; }
           .settings-backdrop { border-radius:0 !important; }
-          .settings-panel { border-radius:0 44px 44px 0 !important; }
+          .settings-panel { border-radius:0 !important; }
         }
 
         /* ── Keyframes ── */
@@ -1415,8 +1415,8 @@ export default function BaseballPomodoro() {
               }
 
               {/* Progress ring — rAF driven for 60fps smoothness */}
-              <div className="timer-ring" style={isMobile ? {width:"240px",height:"240px"} : {width:"280px",height:"280px",maxWidth:"100%"}}>
-                <svg width="280" height="280" viewBox="0 0 280 280" aria-hidden="true" style={isMobile ? {width:"240px",height:"240px"} : {}}>
+              <div className="timer-ring" style={isMobile ? {width:"270px",height:"270px"} : {width:"280px",height:"280px",maxWidth:"100%"}}>
+                <svg width="280" height="280" viewBox="0 0 280 280" aria-hidden="true" style={isMobile ? {width:"270px",height:"270px"} : {}}>
                   <circle cx="140" cy="140" r="126" fill="none" stroke={T.arcTrack} strokeWidth="6" transform="rotate(-90 140 140)" />
                   <circle
                     ref={arcRef}
@@ -1430,9 +1430,9 @@ export default function BaseballPomodoro() {
                     transform="rotate(-90 140 140)"
                   />
                 </svg>
-                <div className="timer-inner" style={isMobile ? {width:"240px",height:"240px"} : {}}>
+                <div className="timer-inner" style={isMobile ? {width:"270px",height:"270px"} : {}}>
                   <div className="timer-digits" role="timer" aria-label={`${fmt(timeLeft)} remaining`}
-                    style={isMobile ? {fontSize:"80px"} : {}}>
+                    style={isMobile ? {fontSize:"90px"} : {}}>
                     {fmt(timeLeft)}
                   </div>
                   <div className="timer-mode-lbl">{mode==="work" ? "Focus" : "Rest"}</div>
