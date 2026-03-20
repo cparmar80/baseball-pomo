@@ -618,6 +618,10 @@ export default function BaseballPomodoro() {
           display: block !important;
           min-height: 100dvh;
           overflow: hidden;
+          background: ${mode === "work" ? T.scrollBg : T.scrollBgBreak} !important;
+        }
+        html {
+          background: ${mode === "work" ? T.scrollBg : T.scrollBgBreak} !important;
         }
       `;
     } catch(e) {}
@@ -1189,7 +1193,7 @@ export default function BaseballPomodoro() {
         @media (max-width: 480px) {
           body { background:${mode==="work" ? T.scrollBg : T.scrollBgBreak}; min-height:100dvh; align-items:stretch; }
           .app-outer { display:block !important; min-height:100dvh !important; padding:0 !important; background:${mode==="work" ? T.scrollBg : T.scrollBgBreak} !important; }
-          .phone { width:100% !important; height:100dvh !important; border-radius:0 !important; box-shadow:none !important; }
+          .phone { width:100% !important; height:100dvh !important; border-radius:0 !important; box-shadow:none !important; padding-bottom:env(safe-area-inset-bottom, 0px) !important; }
           .phone::before, .phone::after { display:none !important; }
           .notch { display:none !important; }
           .status { display:none !important; }
@@ -1220,7 +1224,7 @@ export default function BaseballPomodoro() {
           .btn-primary { min-height:54px !important; width:100% !important; }
           .btn-reset { min-height:44px !important; width:100% !important; }
           .settings-backdrop { border-radius:0 !important; }
-          .settings-panel { border-radius:0 !important; }
+          .settings-panel { border-radius:0 !important; padding-bottom:env(safe-area-inset-bottom, 0px) !important; }
         }
 
         /* ── Keyframes ── */
@@ -1290,7 +1294,7 @@ export default function BaseballPomodoro() {
       )}
 
       <div className="app-outer" style={isMobile ? {display:"block",width:"100%",minHeight:"100dvh",background:mode==="work"?T.scrollBg:T.scrollBgBreak} : {display:"flex",alignItems:"center",justifyContent:"center",minHeight:"100dvh",background:T.wallBg}}>
-        <div className="phone" role="main" aria-label="Ballpark Focus Pomodoro Timer" style={isMobile ? {width:"100%",height:"100dvh",maxHeight:"100dvh",overflow:"hidden",display:"flex",flexDirection:"column",borderRadius:0,boxShadow:"none",paddingBottom:"env(safe-area-inset-bottom, 0px)",background:mode==="work"?T.scrollBg:T.scrollBgBreak,transition:"background 0.5s ease"} : {background:mode==="work"?T.scrollBg:T.scrollBgBreak,transition:"background 0.5s ease"}}>
+        <div className="phone" role="main" aria-label="Ballpark Focus Pomodoro Timer" style={isMobile ? {width:"100%",height:"100dvh",maxHeight:"100dvh",display:"flex",flexDirection:"column",borderRadius:0,boxShadow:"none",paddingBottom:"env(safe-area-inset-bottom, 0px)",background:mode==="work"?T.scrollBg:T.scrollBgBreak,transition:"background 0.5s ease"} : {background:mode==="work"?T.scrollBg:T.scrollBgBreak,transition:"background 0.5s ease"}}>
           <Confetti active={confetti} />
           <div className="notch" aria-hidden="true" />
 
