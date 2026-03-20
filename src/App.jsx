@@ -1198,7 +1198,7 @@ export default function BaseballPomodoro() {
             display:flex !important;
             flex-direction:column !important;
             height:100% !important;
-            padding: env(safe-area-inset-top, 16px) 24px 0 24px !important;
+            padding: env(safe-area-inset-top, 16px) 24px env(safe-area-inset-bottom, 0px) 24px !important;
           }
           .navbar { padding:8px 0 10px; flex:0 0 auto; }
           .stat-card-wrap { padding:12px 12px 10px; margin-bottom:10px; flex:0 0 auto; width:100%; }
@@ -1216,7 +1216,7 @@ export default function BaseballPomodoro() {
           .timer-digits { font-size:90px !important; }
           .floating-chip-wrap { border-radius:0 !important; }
           .stat-announce { display:none !important; }
-          .btn-stack { flex:0 0 auto; padding:10px 0 max(env(safe-area-inset-bottom, 24px), 24px) !important; gap:10px; width:100%; }
+          .btn-stack { flex:0 0 auto; padding:10px 0 16px !important; gap:10px; width:100%; }
           .btn-primary { min-height:54px !important; width:100% !important; }
           .btn-reset { min-height:44px !important; width:100% !important; }
           .settings-backdrop { border-radius:0 !important; }
@@ -1350,7 +1350,7 @@ export default function BaseballPomodoro() {
             </div>
           </div>
 
-          <div className="scroll" style={isMobile ? {padding:"env(safe-area-inset-top, 16px) 24px 0 24px", overflow:"hidden", display:"flex", flexDirection:"column", flex:"1 1 0", minHeight:0} : {}}>
+          <div className="scroll" style={isMobile ? {padding:"env(safe-area-inset-top, 16px) 24px env(safe-area-inset-bottom, 0px) 24px", overflow:"hidden", display:"flex", flexDirection:"column", flex:"1 1 0", minHeight:0} : {}}>
 
 
             {/* Navbar */}
@@ -1459,7 +1459,7 @@ export default function BaseballPomodoro() {
             <div className="stat-announce" />
 
             {/* Buttons */}
-            <div className="btn-stack" style={isMobile ? {flexShrink:0,padding:`10px 0 max(env(safe-area-inset-bottom, 24px), 24px)`,gap:"10px"} : {}}>
+            <div className="btn-stack" style={isMobile ? {flexShrink:0,padding:`10px 0 16px`,gap:"10px"} : {}}>
               <button className={`btn-primary ${mode}`} onClick={toggle}
                 aria-label={running?"Pause timer":isAtStart?"Start timer":"Resume timer"}>
                 {btnLabel}
