@@ -1199,7 +1199,7 @@ export default function BaseballPomodoro() {
         @media (max-width: 480px) {
           body { background:${mode==="work" ? T.scrollBg : T.scrollBgBreak}; min-height:100dvh; align-items:stretch; }
           .app-outer { display:block !important; min-height:100dvh !important; padding:0 !important; background:${mode==="work" ? T.scrollBg : T.scrollBgBreak} !important; }
-          .phone { width:100% !important; height:100dvh !important; border-radius:0 !important; box-shadow:none !important; padding-bottom:env(safe-area-inset-bottom, 0px) !important; }
+          .phone { width:100% !important; height:100dvh !important; border-radius:0 !important; box-shadow:none !important; }
           .phone::before, .phone::after { display:none !important; }
           .notch { display:none !important; }
           .status { display:none !important; }
@@ -1208,7 +1208,7 @@ export default function BaseballPomodoro() {
             display:flex !important;
             flex-direction:column !important;
             height:100% !important;
-            padding: env(safe-area-inset-top, 16px) 24px 0 24px !important;
+            padding: env(safe-area-inset-top, 16px) 24px env(safe-area-inset-bottom, 16px) 24px !important;
           }
           .navbar { padding:8px 0 10px; flex:0 0 auto; }
           .stat-card-wrap { padding:12px 12px 10px; margin-bottom:10px; flex:0 0 auto; width:100%; }
@@ -1230,7 +1230,7 @@ export default function BaseballPomodoro() {
           .btn-primary { min-height:54px !important; width:100% !important; }
           .btn-reset { min-height:44px !important; width:100% !important; }
           .settings-backdrop { border-radius:0 !important; }
-          .settings-panel { border-radius:0 !important; padding-bottom:env(safe-area-inset-bottom, 0px) !important; margin-bottom:calc(-1 * env(safe-area-inset-bottom, 0px)) !important; bottom:calc(-1 * env(safe-area-inset-bottom, 0px)) !important; }
+          .settings-panel { border-radius:0 !important; padding-bottom:calc(env(safe-area-inset-bottom, 0px) + 16px) !important; }
         }
 
         /* ── Keyframes ── */
@@ -1300,7 +1300,7 @@ export default function BaseballPomodoro() {
       )}
 
       <div className="app-outer" style={isMobile ? {display:"block",width:"100%",minHeight:"100dvh",background:mode==="work"?T.scrollBg:T.scrollBgBreak} : {display:"flex",alignItems:"center",justifyContent:"center",minHeight:"100dvh",background:T.wallBg}}>
-        <div className="phone" role="main" aria-label="Ballpark Focus Pomodoro Timer" style={isMobile ? {width:"100%",height:"100dvh",maxHeight:"100dvh",display:"flex",flexDirection:"column",borderRadius:0,boxShadow:"none",paddingBottom:"env(safe-area-inset-bottom, 0px)",background:mode==="work"?T.scrollBg:T.scrollBgBreak,transition:"background 0.5s ease"} : {background:mode==="work"?T.scrollBg:T.scrollBgBreak,transition:"background 0.5s ease"}}>
+        <div className="phone" role="main" aria-label="Ballpark Focus Pomodoro Timer" style={isMobile ? {width:"100%",height:"100dvh",maxHeight:"100dvh",display:"flex",flexDirection:"column",borderRadius:0,boxShadow:"none",background:mode==="work"?T.scrollBg:T.scrollBgBreak,transition:"background 0.5s ease"} : {background:mode==="work"?T.scrollBg:T.scrollBgBreak,transition:"background 0.5s ease"}}>
           <Confetti active={confetti} />
           <div className="notch" aria-hidden="true" />
 
@@ -1360,7 +1360,7 @@ export default function BaseballPomodoro() {
             </div>
           </div>
 
-          <div className="scroll" style={isMobile ? {padding:"env(safe-area-inset-top, 16px) 24px 0 24px", overflow:"hidden", display:"flex", flexDirection:"column", flex:"1 1 0", minHeight:0} : {}}>
+          <div className="scroll" style={isMobile ? {padding:"env(safe-area-inset-top, 16px) 24px env(safe-area-inset-bottom, 16px) 24px", overflow:"hidden", display:"flex", flexDirection:"column", flex:"1 1 0", minHeight:0} : {}}>
 
 
             {/* Navbar */}
