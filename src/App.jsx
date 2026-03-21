@@ -1230,7 +1230,7 @@ export default function BaseballPomodoro() {
           .btn-primary { min-height:54px !important; width:100% !important; }
           .btn-reset { min-height:44px !important; width:100% !important; }
           .settings-backdrop { border-radius:0 !important; }
-          .settings-panel { border-radius:0 !important; padding-bottom:env(safe-area-inset-bottom, 0px) !important; }
+          .settings-panel { border-radius:0 !important; padding-bottom:env(safe-area-inset-bottom, 0px) !important; margin-bottom:calc(-1 * env(safe-area-inset-bottom, 0px)) !important; bottom:calc(-1 * env(safe-area-inset-bottom, 0px)) !important; }
         }
 
         /* ── Keyframes ── */
