@@ -599,7 +599,7 @@ export default function BaseballPomodoro() {
     return () => { clearTimeout(fadeTimer); clearTimeout(hideTimer); };
   }, []);
 
-  // Inject critical mobile reset into document.head for full page scope
+  // Inject base reset into document.head
   useEffect(() => {
     try {
       const id = "baseball-mobile-reset";
@@ -613,21 +613,11 @@ export default function BaseballPomodoro() {
         html, body, #root {
           margin: 0; padding: 0;
           width: 100%;
-        }
-        html {
           height: 100%;
-          background: ${mode === "work" ? T.scrollBg : T.scrollBgBreak} !important;
         }
         body {
-          display: block !important;
-          min-height: 100dvh;
-          height: 100%;
           overflow: hidden;
-          background: ${mode === "work" ? T.scrollBg : T.scrollBgBreak} !important;
-        }
-        #root {
-          height: 100%;
-          background: ${mode === "work" ? T.scrollBg : T.scrollBgBreak} !important;
+          background: transparent;
         }
       `;
     } catch(e) {}
@@ -1198,7 +1188,7 @@ export default function BaseballPomodoro() {
         /* ── Mobile full-screen override ── */
         @media (max-width: 480px) {
           body { background:${mode==="work" ? T.scrollBg : T.scrollBgBreak}; min-height:100dvh; align-items:stretch; }
-          .app-outer { display:block !important; min-height:100dvh !important; padding:0 !important; background:${mode==="work" ? T.scrollBg : T.scrollBgBreak} !important; }
+          .app-outer { display:block !important; min-height:calc(100dvh + 50px) !important; padding:0 !important; margin-bottom:-50px !important; background:${mode==="work" ? T.scrollBg : T.scrollBgBreak} !important; }
           .phone { width:100% !important; height:100dvh !important; border-radius:0 !important; box-shadow:none !important; }
           .phone::before, .phone::after { display:none !important; }
           .notch { display:none !important; }
@@ -1230,7 +1220,25 @@ export default function BaseballPomodoro() {
           .btn-primary { min-height:54px !important; width:100% !important; }
           .btn-reset { min-height:44px !important; width:100% !important; }
           .settings-backdrop { border-radius:0 !important; }
-          .settings-panel { border-radius:0 !important; padding-bottom:calc(env(safe-area-inset-bottom, 0px) + 16px) !important; }
+          .settings-panel { 
+            position:fixed !important; 
+            top:0 !important; 
+            right:0 !important; 
+            bottom:-50px !important; 
+            border-radius:0 !important; 
+            padding-top:env(safe-area-inset-top, 0px) !important;
+            padding-bottom:calc(env(safe-area-inset-bottom, 0px) + 66px) !important; 
+            width:100% !important;
+            z-index:9999 !important;
+          }
+          .settings-backdrop {
+            position:fixed !important;
+            top:0 !important;
+            left:0 !important;
+            right:0 !important;
+            bottom:-50px !important;
+            border-radius:0 !important;
+          }
         }
 
         /* ── Keyframes ── */
