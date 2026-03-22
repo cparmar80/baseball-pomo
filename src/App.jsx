@@ -1137,7 +1137,7 @@ export default function BaseballPomodoro() {
         .settings-panel { position:absolute; top:0; right:0; bottom:0; width:88%; background:${T.settingsBg}; transition:background 0.5s ease; border-radius:0 44px 44px 0; z-index:201; transform:translateX(100%); transition:transform 0.3s cubic-bezier(0.4,0,0.2,1); display:flex; flex-direction:column; overflow-y:auto; scrollbar-width:none; border-left:1px solid ${T.settingsDivider}; }
         .settings-panel::-webkit-scrollbar { display:none; }
         .settings-panel.open { transform:translateX(0); }
-        .settings-header { display:flex; align-items:center; justify-content:space-between; padding:8px 24px 20px; border-bottom:1px solid ${T.settingsDivider}; flex-shrink:0; }
+        .settings-header { display:flex; align-items:center; justify-content:space-between; padding:0px 24px 20px; border-bottom:1px solid ${T.settingsDivider}; flex-shrink:0; }
         .settings-title { font-family:'Barlow Condensed',sans-serif; font-size:22px; font-weight:800; color:${T.settingsTitle}; letter-spacing:0.06em; text-transform:uppercase; }
         .settings-close { background:${T.settingsHeader}; border:none; cursor:pointer; color:${T.navbarIcon}; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; transition:background 0.2s, color 0.2s; }
         .settings-close:hover { background:${T.cardBg}; color:${T.settingsTitle}; }
@@ -1228,7 +1228,7 @@ export default function BaseballPomodoro() {
             width:88% !important;
             border-radius:0 !important;
             padding-top:calc(env(safe-area-inset-top, 0px) + 8px) !important;
-            padding-bottom:calc(env(safe-area-inset-bottom, 0px) + 100px) !important;
+            padding-bottom:calc(env(safe-area-inset-bottom, 0px) + 32px) !important;
           }
           .settings-backdrop {
             border-radius:0 !important;
