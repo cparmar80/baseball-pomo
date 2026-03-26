@@ -1158,16 +1158,16 @@ export default function BaseballPomodoro() {
         .stepper-btn:hover:not(:disabled) { background:${T.cardBg}; }
         .stepper-btn:disabled { opacity:0.3; cursor:not-allowed; }
         .stepper-btn:focus-visible { outline:3px solid ${T.focusOutline}; outline-offset:3px; }
-        .stepper-value { font-family:'Barlow Condensed',sans-serif; font-size:28px; font-weight:800; color:${T.stepperVal}; min-width:52px; text-align:center; letter-spacing:-0.02em; }
+        .stepper-value { font-family:'Silkscreen',sans-serif; font-size:22px; font-weight:400; color:${T.stepperVal}; min-width:52px; text-align:center; letter-spacing:0em; }
         .stepper-unit { font-size:14px; font-weight:400; color:${T.stepperUnit}; margin-left:4px; }
 
         /* Lifetime stats */
         .lifetime-row-single { display:flex; align-items:center; justify-content:space-between; padding:10px 4px; margin-bottom:4px; }
         .lifetime-row-label { font-size:17px; font-weight:700; color:${T.lifetimeLabel}; letter-spacing:0.04em; font-family:'Barlow Condensed',sans-serif; }
-        .lifetime-row-val { font-family:'Barlow Condensed',sans-serif; font-size:17px; font-weight:700; color:${T.lifetimeVal}; letter-spacing:0.04em; }
+        .lifetime-row-val { font-family:'Silkscreen',sans-serif; font-size:14px; font-weight:400; color:${T.lifetimeVal}; letter-spacing:0em; }
         .lifetime-hits-grid { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:1px; background:${T.lifetimeGridBg}; border-radius:12px; overflow:hidden; margin:12px 0 16px; }
         .lifetime-cell { background:${T.lifetimeCellBg}; padding:12px 4px; text-align:center; display:flex; flex-direction:column; gap:4px; }
-        .lifetime-val { font-family:'Barlow Condensed',sans-serif; font-size:22px; font-weight:800; color:${T.lifetimeVal}; letter-spacing:-0.01em; line-height:1; }
+        .lifetime-val { font-family:'Silkscreen',sans-serif; font-size:18px; font-weight:400; color:${T.lifetimeVal}; letter-spacing:0em; line-height:1; }
         .lifetime-key { font-size:9px; font-weight:400; color:${T.lifetimeKey}; letter-spacing:0.05em; text-transform:uppercase; }
         .reset-btn { width:100%; min-height:40px; background:rgba(192,57,43,0.12); border:1px solid rgba(192,57,43,0.25); border-radius:10px; font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:${T.resetColor}; cursor:pointer; transition:background 0.2s, color 0.2s; }
         .reset-btn:hover { background:rgba(192,57,43,0.22); }
