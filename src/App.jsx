@@ -657,6 +657,7 @@ export default function BaseballPomodoro() {
     try { localStorage.setItem("ballpark_name", name); } catch(e) {}
   };
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [helpOpen, setHelpOpen] = useState(false);
 
   // Lifetime stats — persisted to localStorage
   const LIFETIME_KEY = "ballpark_lifetime_v1";
@@ -1164,11 +1165,11 @@ export default function BaseballPomodoro() {
         /* Lifetime stats */
         .lifetime-row-single { display:flex; align-items:center; justify-content:space-between; padding:10px 4px; margin-bottom:4px; }
         .lifetime-row-label { font-size:17px; font-weight:700; color:${T.lifetimeLabel}; letter-spacing:0.04em; font-family:'Barlow Condensed',sans-serif; }
-        .lifetime-row-val { font-family:'Silkscreen',sans-serif; font-size:14px; font-weight:400; color:${T.lifetimeVal}; letter-spacing:0em; }
+        .lifetime-row-val { font-family:'Silkscreen',sans-serif; font-size:17px; font-weight:400; color:${T.lifetimeVal}; letter-spacing:0em; }
         .lifetime-hits-grid { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:1px; background:${T.lifetimeGridBg}; border-radius:12px; overflow:hidden; margin:12px 0 16px; }
         .lifetime-cell { background:${T.lifetimeCellBg}; padding:12px 4px; text-align:center; display:flex; flex-direction:column; gap:4px; }
-        .lifetime-val { font-family:'Silkscreen',sans-serif; font-size:18px; font-weight:400; color:${T.lifetimeVal}; letter-spacing:0em; line-height:1; }
-        .lifetime-key { font-size:9px; font-weight:400; color:${T.lifetimeKey}; letter-spacing:0.05em; text-transform:uppercase; }
+        .lifetime-val { font-family:'Silkscreen',sans-serif; font-size:22px; font-weight:400; color:${T.lifetimeVal}; letter-spacing:0em; line-height:1; }
+        .lifetime-key { font-size:11px; font-weight:400; color:${T.lifetimeKey}; letter-spacing:0.05em; text-transform:uppercase; }
         .reset-btn { width:100%; min-height:40px; background:rgba(192,57,43,0.12); border:1px solid rgba(192,57,43,0.25); border-radius:10px; font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:${T.resetColor}; cursor:pointer; transition:background 0.2s, color 0.2s; }
         .reset-btn:hover { background:rgba(192,57,43,0.22); }
         .reset-btn.confirm { background:rgba(192,57,43,0.18); color:${T.resetConfirmColor}; border-color:rgba(192,57,43,0.4); font-size:12px; }
@@ -1242,6 +1243,25 @@ export default function BaseballPomodoro() {
             border-radius:0 !important;
             bottom:-50px !important;
           }
+        }
+
+        /* ── Help Modal ── */
+        .help-backdrop { position:absolute; inset:0; background:rgba(0,0,0,0.55); z-index:200; border-radius:44px; }
+        .help-modal { position:absolute; left:0; right:0; bottom:0; max-height:88%; background:${T.settingsBg}; border-radius:28px 28px 0 0; z-index:201; display:flex; flex-direction:column; transform:translateY(100%); transition:transform 0.35s cubic-bezier(0.4,0,0.2,1); overflow:hidden; }
+        .help-modal.open { transform:translateY(0); }
+        .help-modal-header { display:flex; align-items:center; justify-content:space-between; padding:20px 24px 16px; border-bottom:1px solid ${T.settingsDivider}; flex-shrink:0; }
+        .help-modal-title { font-family:'Barlow Condensed',sans-serif; font-size:20px; font-weight:800; color:${T.settingsTitle}; letter-spacing:0.06em; text-transform:uppercase; }
+        .help-modal-body { overflow-y:auto; -webkit-overflow-scrolling:touch; overscroll-behavior:none; padding:20px 24px 40px; display:flex; flex-direction:column; gap:20px; }
+        .help-section-title { font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; color:${T.statValActive}; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:6px; }
+        .help-text { font-family:'Barlow',sans-serif; font-size:14px; font-weight:400; color:${T.stepperLabel}; line-height:1.6; }
+        .help-table { width:100%; border-collapse:collapse; margin-top:6px; }
+        .help-table td { font-family:'Barlow',sans-serif; font-size:13px; color:${T.stepperLabel}; padding:5px 0; vertical-align:top; line-height:1.5; }
+        .help-table td:first-child { font-family:'Barlow Condensed',sans-serif; font-weight:700; color:${T.statValActive}; width:36%; letter-spacing:0.04em; }
+        .help-divider { height:1px; background:${T.settingsDivider}; }
+        .help-privacy-link { font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; color:${T.statValActive}; letter-spacing:0.1em; text-decoration:none; text-transform:uppercase; }
+        @media (max-width: 480px) {
+          .help-backdrop { border-radius:0 !important; position:fixed !important; }
+          .help-modal { position:fixed !important; border-radius:28px 28px 0 0 !important; max-height:92% !important; }
         }
 
         /* ── Keyframes ── */
@@ -1346,6 +1366,61 @@ export default function BaseballPomodoro() {
             T={T}
           />
 
+          {/* Help Modal */}
+          {helpOpen && (
+            <div className="help-backdrop" onClick={() => setHelpOpen(false)} aria-hidden="true" />
+          )}
+          <div className={`help-modal${helpOpen ? " open" : ""}`} role="dialog" aria-modal="true" aria-label="Help">
+            <div className="help-modal-header">
+              <span className="help-modal-title">⚾ How PomoBall Works</span>
+              <button className="settings-close" onClick={() => setHelpOpen(false)} aria-label="Close help">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                  <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+              </button>
+            </div>
+            <div className="help-modal-body">
+
+              <div>
+                <div className="help-section-title">What is the Pomodoro Method?</div>
+                <p className="help-text">The Pomodoro Technique is a time management method where you work in focused intervals — typically 25 minutes — followed by a short break. The idea is simple: deep focus for a set time, then rest, then repeat. Over time, these intervals add up to serious progress.</p>
+              </div>
+
+              <div className="help-divider" />
+
+              <div>
+                <div className="help-section-title">The Baseball Twist</div>
+                <p className="help-text">In PomoBall, every focus session is an at-bat. Complete your session and you step up to the plate — the result is a randomly awarded hit. Most sessions are Singles, but every now and then you crack a Home Run.</p>
+                <table className="help-table" style={{marginTop:"12px"}}>
+                  <tbody>
+                    <tr><td>At Plate</td><td>Your active focus session</td></tr>
+                    <tr><td>Dugout</td><td>Your break — rest between at-bats</td></tr>
+                    <tr><td>Single (45%)</td><td>Solid, dependable work</td></tr>
+                    <tr><td>Double (30%)</td><td>A strong session</td></tr>
+                    <tr><td>Triple (15%)</td><td>A standout effort</td></tr>
+                    <tr><td>Home Run (10%)</td><td>The rarest — celebrate it</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="help-divider" />
+
+              <div>
+                <div className="help-section-title">Why I Built This</div>
+                <p className="help-text">I'm a lifelong baseball fan who's been using Pomodoro timers for years. The idea came to me while grinding through some work with a baseball game on in the background — I started thinking about how similar the two really are. Every at-bat is a fresh chance. Every pitch is a decision. Every session at your desk is the same way: a moment of focus, a shot at something good.</p>
+                <p className="help-text" style={{marginTop:"10px"}}>PomoBall is built around that idea. Each Pomodoro isn't just a timer — it's an at-bat. And each at-bat is a chance for progress and productivity when you're at the plate.</p>
+              </div>
+
+              <div className="help-divider" />
+
+              <div style={{display:"flex", alignItems:"center", justifyContent:"space-between"}}>
+                <span className="help-text" style={{fontSize:"12px", opacity:0.7}}>Privacy Policy</span>
+                <a href="YOUR_NOTION_URL_HERE" target="_blank" rel="noopener noreferrer" className="help-privacy-link">View →</a>
+              </div>
+
+            </div>
+          </div>
+
           {/* Status bar */}
           <div className="status" aria-hidden="true">
             <span className="s-time">9:41</span>
@@ -1362,12 +1437,21 @@ export default function BaseballPomodoro() {
             {/* Navbar */}
             <div className="navbar">
               <PlayerName name={playerName} onChange={handleNameChange} T={T} />
-              <button className="settings-btn" onClick={() => setSettingsOpen(true)} aria-label="Open settings">
+              <div style={{display:"flex", alignItems:"center", gap:"4px"}}>
+                <button className="settings-btn" onClick={() => setHelpOpen(true)} aria-label="Open help">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                    <line x1="12" y1="17" x2="12.01" y2="17"/>
+                  </svg>
+                </button>
+                <button className="settings-btn" onClick={() => setSettingsOpen(true)} aria-label="Open settings">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="12" cy="12" r="3"/>
                   <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
                 </svg>
               </button>
+              </div>
             </div>
 
             {/* Stat card */}
