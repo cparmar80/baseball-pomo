@@ -10,6 +10,27 @@
     <link rel="manifest" href="/manifest.json" />
     <link rel="apple-touch-icon" href="/icons/icon-192.png" />
     <title>PomoBall</title>
+    <style>
+      /* Lock to portrait: rotate the viewport back if device is in landscape */
+      @media screen and (orientation: landscape) {
+        html {
+          transform: rotate(-90deg);
+          transform-origin: left top;
+          width: 100vh;
+          height: 100vw;
+          overflow-x: hidden;
+          position: absolute;
+          top: 100%;
+          left: 0;
+        }
+      }
+    </style>
+    <script>
+      // Use Screen Orientation API where supported (Android Chrome, installed PWA)
+      if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock('portrait').catch(() => {});
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
