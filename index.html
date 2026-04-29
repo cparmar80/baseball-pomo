@@ -11,17 +11,28 @@
     <link rel="apple-touch-icon" href="/icons/icon-192.png" />
     <title>PomoBall</title>
     <style>
-      /* Lock to portrait: rotate the viewport back if device is in landscape */
+      /* Orientation lock: in landscape, rotate #root back to portrait and size it to fill the screen */
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
       @media screen and (orientation: landscape) {
-        html {
-          transform: rotate(-90deg);
-          transform-origin: left top;
+        body {
+          /* Swap axes */
           width: 100vh;
           height: 100vw;
-          overflow-x: hidden;
-          position: absolute;
-          top: 100%;
+          /* Rotate counter-clockwise back to portrait */
+          transform: rotate(-90deg);
+          transform-origin: top left;
+          /* Shift down by full viewport width so it stays on screen */
+          position: fixed;
+          top: 100vw;
           left: 0;
+          overflow: hidden;
         }
       }
     </style>
