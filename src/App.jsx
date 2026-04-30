@@ -1110,8 +1110,8 @@ export default function BaseballPomodoro() {
         .timer-ring { position:relative; display:flex; align-items:center; justify-content:center; }
         .timer-ring svg { position:absolute; top:0; left:0; }
         .timer-inner { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; justify-content:center; width:280px; height:280px; }
-        .timer-digits { font-family:'Barlow Condensed',sans-serif; font-size:96px; font-weight:800; color:${T.timerDigits}; transition:color 0.5s ease; letter-spacing:-0.02em; line-height:1; }
-        .timer-mode-lbl { font-family:'Barlow Condensed',sans-serif; font-size:12px; font-weight:700; color:${T.timerModeLbl}; letter-spacing:0.18em; text-transform:uppercase; margin-top:4px; }
+        .timer-digits { font-family:'Silkscreen',sans-serif; font-size:72px; font-weight:400; color:${T.timerDigits}; transition:color 0.5s ease; letter-spacing:0.04em; line-height:1; }
+        .timer-mode-lbl { font-family:'Silkscreen',sans-serif; font-size:10px; font-weight:400; color:${T.timerModeLbl}; letter-spacing:0.1em; text-transform:uppercase; margin-top:8px; }
         @keyframes bannerFadeIn { from { opacity:0; } to { opacity:1; } }
         .hr-banner-wrap { height:48px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
         .hr-banner { text-align:center; font-family:'Barlow Condensed',sans-serif; font-size:23px; font-weight:800; letter-spacing:0.18em; text-transform:uppercase; color:${T.statValActive}; animation:bannerFadeIn 0.35s ease forwards; }
