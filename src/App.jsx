@@ -1275,6 +1275,20 @@ export default function BaseballPomodoro() {
         @keyframes numPop { 0%,100% { transform:scale(1); } 45% { transform:scale(1.18); } }
         @keyframes livePulse { 0% { box-shadow:0 0 0 0 rgba(192,57,43,0.8); } 65% { box-shadow:0 0 0 8px rgba(192,57,43,0); } 100% { box-shadow:0 0 0 0 rgba(192,57,43,0); } }
         @keyframes breakPulse { 0%,100% { opacity:0.5; } 50% { opacity:1; } }
+
+        /* ── Portrait orientation lock (iOS Safari) ── */
+        @media screen and (orientation: landscape) {
+          html {
+            transform: rotate(-90deg);
+            transform-origin: left top;
+            width: 100svh;
+            height: 100svw;
+            position: fixed;
+            top: 100svw;
+            left: 0;
+            overflow: hidden;
+          }
+        }
       `}</style>
 
       {/* ── Splash Screen ── */}
