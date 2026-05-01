@@ -1421,8 +1421,10 @@ export default function BaseballPomodoro() {
 
               <div>
                 <div className="help-section-title">Why I Built This</div>
-                <p className="help-text">I'm a lifelong baseball fan who's been using Pomodoro timers for years. The idea came to me while grinding through some work with a baseball game on in the background — I started thinking about how similar the two really are. Every at-bat is a fresh chance. Every pitch is a decision. Every session at your desk is the same way: a moment of focus, a shot at something good.</p>
-                <p className="help-text" style={{marginTop:"10px"}}>PomoBall is built around that idea. Each Pomodoro isn't just a timer — it's an at-bat. And each at-bat is a chance for progress and productivity when you're at the plate.</p>
+                <p className="help-text">I'm a lifelong sports fan, especially baseball. I've also been using Pomodoro timers while I work for several years. I am a big believer in its power to provide focus and motivation to get things done, one timer at a time.</p>
+                <p className="help-text" style={{marginTop:"10px"}}>PomoBall is a vibe-coded creation that combines my love for baseball and traditional pomodoro timers.</p>
+                <p className="help-text" style={{marginTop:"10px"}}>Each timer is an at-bat. Each at-bat is another chance to be productive and make meaningful progress when you're up at the plate.</p>
+                <p className="help-text" style={{marginTop:"10px"}}>Cheers and happy focusing!</p>
               </div>
 
               <div className="help-divider" />
