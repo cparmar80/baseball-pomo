@@ -1431,7 +1431,7 @@ export default function BaseballPomodoro() {
 
               <div style={{display:"flex", alignItems:"center", justifyContent:"space-between"}}>
                 <span className="help-text" style={{fontSize:"12px", opacity:0.7}}>Privacy Policy</span>
-                <a href="YOUR_NOTION_URL_HERE" target="_blank" rel="noopener noreferrer" className="help-privacy-link">View →</a>
+                <a href="https://www.notion.so/PomoBall-Privacy-Policy-Support-32da7d6ecab48071967dd56473832004" target="_blank" rel="noopener noreferrer" className="help-privacy-link">View →</a>
               </div>
 
             </div>
