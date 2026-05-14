@@ -1397,24 +1397,24 @@ export default function BaseballPomodoro() {
 
               <div>
                 <div className="help-section-title">What is the Pomodoro Method?</div>
-                <p className="help-text">The Pomodoro Technique is a time management method where you work in focused intervals — typically 25 minutes — followed by a short break. The idea is simple: deep focus for a set time, then rest, then repeat. Over time, these intervals add up to serious progress.</p>
+                <p className="help-text">Sometimes, the hardest part of getting work done is getting started. The Pomodoro Technique helps out with that.</p>
+                <p className="help-text" style={{marginTop:"10px"}}>The Pomodoro Technique is a time management method that allows for focused work, followed by rest. The idea is simple: deep focus on one task for a set period of time (usually 25 minutes), then take a short break (usually 5 minutes), then repeat until you finish the task. You'll see how quickly 1 hour can fly by.</p>
               </div>
 
               <div className="help-divider" />
 
               <div>
                 <div className="help-section-title">The Baseball Twist</div>
-                <p className="help-text">In PomoBall, every focus session is an at-bat. Complete your session and you step up to the plate — the result is a randomly awarded hit. Most sessions are Singles, but every now and then you crack a Home Run.</p>
+                <p className="help-text">In PomoBall, every focus session is treated as an at-bat. For baseball players, each at-bat is a new opportunity. When you step up to the plate in PomoBall, the result is progress. This progress can take the form of a:</p>
                 <table className="help-table" style={{marginTop:"12px"}}>
                   <tbody>
-                    <tr><td>At Plate</td><td>Your active focus session</td></tr>
-                    <tr><td>Dugout</td><td>Your break — rest between at-bats</td></tr>
-                    <tr><td>Single</td><td>Solid, dependable work</td></tr>
-                    <tr><td>Double</td><td>A strong session</td></tr>
-                    <tr><td>Triple</td><td>A standout effort</td></tr>
-                    <tr><td>Home Run</td><td>The rarest — celebrate it</td></tr>
+                    <tr><td>Single (1B)</td><td></td></tr>
+                    <tr><td>Double (2B)</td><td></td></tr>
+                    <tr><td>Triple (3B)</td><td></td></tr>
+                    <tr><td>Home Run (HR)</td><td></td></tr>
                   </tbody>
                 </table>
+                <p className="help-text" style={{marginTop:"10px"}}>For your breaks, cool off in the dugout.</p>
               </div>
 
               <div className="help-divider" />
